@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Dream Home in Lahore | LeadPilot AI</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF8F5;
+  --bg-card: #FFFFFF;
+  --text: #1A1A17;
+  --text-muted: #6B6960;
+  --accent: #C8553D;
+  --accent-light: #F4E8E4;
+  --accent-dark: #A3412D;
+  --gold: #B8941F;
+  --gold-light: #F7F0D8;
+  --border: #E8E4DE;
+  --success: #2D7A4F;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.grain {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.03; pointer-events: none; z-index: 100;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* NAV */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 40px; max-width: 1200px; margin: 0 auto;
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px; color: var(--accent);
+  letter-spacing: -0.5px;
+}
+.logo span { color: var(--text); }
+nav a {
+  color: var(--text-muted); text-decoration: none; font-size: 14px;
+  font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;
+}
+
+/* HERO */
+.hero {
+  max-width: 1200px; margin: 0 auto;
+  padding: 60px 40px 40px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  align-items: center;
+}
+.hero-text h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 52px; line-height: 1.1; letter-spacing: -1.5px;
+  color: var(--text); margin-bottom: 20px;
+}
+.hero-text h1 em {
+  font-style: italic; color: var(--accent);
+}
+.hero-text p {
+  font-size: 18px; color: var(--text-muted);
+  max-width: 480px; margin-bottom: 32px; font-weight: 300;
+  line-height: 1.7;
+}
+.trust-badges {
+  display: flex; gap: 24px; align-items: center;
+  padding-top: 20px; border-top: 1px solid var(--border);
+}
+.badge {
+  display: flex; flex-direction: column;
+}
+.badge-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px; color: var(--accent); line-height: 1;
+}
+.badge-label {
+  font-size: 12px; color: var(--text-muted); text-transform: uppercase;
+  letter-spacing: 0.5px; margin-top: 4px;
+}
+
+/* FORM CARD */
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 40px rgba(0,0,0,0.04);
+}
+.form-card::before {
+  content: '';
+  position: absolute; top: -1px; left: 40px; right: 40px; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  border-radius: 0 0 3px 3px;
+}
+.form-header {
+  margin-bottom: 28px;
+}
+.form-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px; margin-bottom: 6px;
+}
+.form-header p {
+  font-size: 14px; color: var(--text-muted);
+}
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block; font-size: 13px; font-weight: 500;
+  color: var(--text); margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+.form-group input, .form-group select {
+  width: 100%; padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px; font-size: 15px;
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+.form-group input::placeholder {
+  color: #B5B0A6;
+}
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.submit-btn {
+  width: 100%; padding: 14px;
+  background: var(--accent); color: white;
+  border: none; border-radius: 10px;
+  font-size: 16px; font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer; margin-top: 8px;
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.3px;
+}
+.submit-btn:hover { background: var(--accent-dark); }
+.submit-btn:active { transform: scale(0.99); }
+.submit-btn:disabled {
+  background: #B5B0A6; cursor: not-allowed;
+}
+.form-footer {
+  text-align: center; margin-top: 12px;
+  font-size: 12px; color: var(--text-muted);
+}
+
+/* SUCCESS STATE */
+.success-state {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+.success-icon {
+  width: 64px; height: 64px;
+  background: #E8F5EE;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 28px;
+}
+.success-state h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px; margin-bottom: 8px;
+}
+.success-state p {
+  color: var(--text-muted); font-size: 15px;
+  max-width: 300px; margin: 0 auto;
+}
+
+/* FEATURES */
+.features {
+  max-width: 1200px; margin: 60px auto;
+  padding: 0 40px;
+}
+.features-header {
+  text-align: center; margin-bottom: 48px;
+}
+.features-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px; margin-bottom: 8px;
+}
+.features-header p {
+  color: var(--text-muted); font-size: 16px;
+}
+.features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 32px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.feature-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+.feature-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 16px;
+}
+.feature-icon.red { background: var(--accent-light); }
+.feature-icon.gold { background: var(--gold-light); }
+.feature-icon.green { background: #E3F2E9; }
+.feature-card h3 {
+  font-size: 17px; font-weight: 600;
+  margin-bottom: 8px;
+}
+.feature-card p {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+  max-width: 700px; margin: 60px auto;
+  padding: 0 40px; text-align: center;
+}
+.testimonial blockquote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px; font-style: italic;
+  line-height: 1.5; color: var(--text);
+  margin-bottom: 20px;
+}
+.testimonial cite {
+  font-style: normal; font-size: 14px;
+  color: var(--text-muted);
+}
+.testimonial cite strong {
+  color: var(--text); display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px; margin-bottom: 2px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center; padding: 40px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+footer p {
+  font-size: 13px; color: var(--text-muted);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-text { animation: fadeUp 0.6s ease-out; }
+.form-card { animation: fadeUp 0.6s ease-out 0.15s both; }
+.feature-card:nth-child(1) { animation: fadeUp 0.5s ease-out 0.3s both; }
+.feature-card:nth-child(2) { animation: fadeUp 0.5s ease-out 0.4s both; }
+.feature-card:nth-child(3) { animation: fadeUp 0.5s ease-out 0.5s both; }
+
+/* SPINNER */
+.spinner {
+  display: inline-block; width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle; margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; padding: 40px 20px; gap: 40px; }
+  .hero-text h1 { font-size: 36px; }
+  .features-grid { grid-template-columns: 1fr; }
+  nav { padding: 16px 20px; }
+  .features { padding: 0 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .trust-badges { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<nav>
+  <div class="logo">Lead<span>Pilot</span></div>
+  <a href="#form">Get Started</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Find your <em>perfect home</em> in Lahore</h1>
+    <p>Tell us what you're looking for and our expert agents will match you with handpicked properties that fit your budget and lifestyle. Get a personalized response within minutes.</p>
+    <div class="trust-badges">
+      <div class="badge">
+        <span class="badge-number">500+</span>
+        <span class="badge-label">Families settled</span>
+      </div>
+      <div class="badge">
+        <span class="badge-number">15 min</span>
+        <span class="badge-label">Avg. response</span>
+      </div>
+      <div class="badge">
+        <span class="badge-number">4.9/5</span>
+        <span class="badge-label">Client rating</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card" id="form">
+    <div id="formContent">
+      <div class="form-header">
+        <h2>Start your property search</h2>
+        <p>Fill in your preferences and we'll find the best matches for you.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="e.g. Ahmed Khan" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="you@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="phone" placeholder="+92 300 1234567" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>What are you looking for?</label>
+        <select id="property_interest">
+          <option value="">Select property type</option>
+          <option value="3-bed apartment">3-Bed Apartment</option>
+          <option value="5-marla house">5-Marla House</option>
+          <option value="10-marla house">10-Marla House</option>
+          <option value="1-kanal house">1-Kanal House</option>
+          <option value="2-kanal house">2-Kanal House</option>
+          <option value="commercial plot">Commercial Plot</option>
+          <option value="residential plot">Residential Plot</option>
+          <option value="penthouse">Penthouse</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Budget</label>
+          <select id="budget">
+            <option value="">Select budget</option>
+            <option value="50-80 Lakh">50-80 Lakh</option>
+            <option value="80 Lakh - 1.5 Crore">80 Lakh - 1.5 Crore</option>
+            <option value="1.5 - 3 Crore">1.5 - 3 Crore</option>
+            <option value="3 - 5 Crore">3 - 5 Crore</option>
+            <option value="5 Crore+">5 Crore+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preferred Location</label>
+          <select id="location">
+            <option value="">Select area</option>
+            <option value="DHA Phase 5 Lahore">DHA Phase 5</option>
+            <option value="DHA Phase 6 Lahore">DHA Phase 6</option>
+            <option value="DHA Phase 7 Lahore">DHA Phase 7</option>
+            <option value="DHA Phase 8 Lahore">DHA Phase 8</option>
+            <option value="Bahria Town Lahore">Bahria Town</option>
+            <option value="Gulberg Lahore">Gulberg</option>
+            <option value="Johar Town Lahore">Johar Town</option>
+            <option value="Model Town Lahore">Model Town</option>
+            <option value="Cantt Lahore">Cantt</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" onclick="submitLead()">
+        Find My Perfect Property
+      </button>
+
+      <p class="form-footer">Your information is secure and will never be shared.</p>
+    </div>
+
+    <div class="success-state" id="successState">
+      <div class="success-icon">&#10003;</div>
+      <h3>You're all set!</h3>
+      <p>Our property specialist will reach out to you within the next 15 minutes with personalized options.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="features-header">
+    <h2>Why families choose us</h2>
+    <p>We make finding your dream home effortless</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon red">&#9751;</div>
+      <h3>Handpicked matches</h3>
+      <p>No more scrolling through hundreds of listings. We match you with properties that fit your exact criteria, budget, and lifestyle preferences.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon gold">&#9889;</div>
+      <h3>Response in minutes</h3>
+      <p>Our AI-powered system analyzes your preferences instantly and our agents follow up with curated options before anyone else.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon green">&#9733;</div>
+      <h3>Expert local knowledge</h3>
+      <p>Deep expertise in Lahore's prime neighborhoods. We know every street, every community, and every hidden gem in DHA, Bahria, and beyond.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <blockquote>"They found us a beautiful 10-marla home in DHA Phase 6 within our budget. The entire process from first contact to keys in hand was incredibly smooth."</blockquote>
+  <cite>
+    <strong>Ayesha &amp; Faisal Malik</strong>
+    Homeowners since 2025
+  </cite>
+</section>
+
+<footer>
+  <p>&copy; 2026 LeadPilot. All rights reserved.</p>
+</footer>
+
+<script>
+const WEBHOOK_URL = 'https://hook.us2.make.com/w8biefav9tqw4lyq9t3lfvr2x9ovt464';
+
+async function submitLead() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const property_interest = document.getElementById('property_interest').value;
+  const budget = document.getElementById('budget').value;
+  const location = document.getElementById('location').value;
+
+  if (!name || !email || !phone || !property_interest || !budget || !location) {
+    alert('Please fill in all fields to find your perfect property.');
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Finding properties...';
+
+  try {
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email,
+        phone,
+        property_interest,
+        budget,
+        location
+      })
+    });
+
+    if (response.ok) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
+    } else {
+      throw new Error('Network response was not ok');
+    }
+  } catch (error) {
+    btn.disabled = false;
+    btn.innerHTML = 'Find My Perfect Property';
+    alert('Something went wrong. Please try again.');
+  }
+}
+</script>
+
+</body>
+</html>
