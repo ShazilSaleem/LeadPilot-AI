@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Find Your Dream Home in Lahore | LeadPilot AI</title>
+<title>Find Your Dream Home | LeadPilot AI</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -44,10 +44,15 @@ nav {
   letter-spacing: -0.5px;
 }
 .logo span { color: var(--text); }
-nav a {
+.nav-links {
+  display: flex; gap: 28px; align-items: center;
+}
+.nav-links a {
   color: var(--text-muted); text-decoration: none; font-size: 14px;
   font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;
+  transition: color 0.2s;
 }
+.nav-links a:hover { color: var(--accent); }
 
 /* HERO */
 .hero {
@@ -178,7 +183,7 @@ nav a {
 }
 .success-state p {
   color: var(--text-muted); font-size: 15px;
-  max-width: 300px; margin: 0 auto;
+  max-width: 340px; margin: 0 auto;
 }
 
 /* FEATURES */
@@ -229,25 +234,41 @@ nav a {
   line-height: 1.6;
 }
 
-/* TESTIMONIAL */
-.testimonial {
-  max-width: 700px; margin: 60px auto;
-  padding: 0 40px; text-align: center;
+/* TESTIMONIALS */
+.testimonials {
+  max-width: 1200px; margin: 60px auto;
+  padding: 0 40px;
 }
-.testimonial blockquote {
+.testimonials-header {
+  text-align: center; margin-bottom: 40px;
+}
+.testimonials-header h2 {
   font-family: 'DM Serif Display', serif;
-  font-size: 24px; font-style: italic;
-  line-height: 1.5; color: var(--text);
-  margin-bottom: 20px;
+  font-size: 32px;
 }
-.testimonial cite {
-  font-style: normal; font-size: 14px;
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  display: flex; flex-direction: column;
+}
+.stars {
+  color: var(--gold); letter-spacing: 3px;
+  font-size: 16px; margin-bottom: 14px;
+}
+.testimonial-card blockquote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px; font-style: italic;
+  line-height: 1.55; color: var(--text);
+  margin-bottom: 16px; flex: 1;
+}
+.testimonial-card cite {
+  font-style: normal; font-size: 13px;
   color: var(--text-muted);
-}
-.testimonial cite strong {
-  color: var(--text); display: block;
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px; margin-bottom: 2px;
 }
 
 /* FOOTER */
@@ -258,7 +279,13 @@ footer {
 }
 footer p {
   font-size: 13px; color: var(--text-muted);
+  margin-bottom: 8px;
 }
+footer a {
+  color: var(--accent); text-decoration: none;
+  font-size: 13px; font-weight: 500;
+}
+footer a:hover { text-decoration: underline; }
 
 /* ANIMATIONS */
 @keyframes fadeUp {
@@ -287,8 +314,10 @@ footer p {
   .hero { grid-template-columns: 1fr; padding: 40px 20px; gap: 40px; }
   .hero-text h1 { font-size: 36px; }
   .features-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
   nav { padding: 16px 20px; }
-  .features { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .features, .testimonials { padding: 0 20px; }
   .form-row { grid-template-columns: 1fr; }
   .trust-badges { gap: 16px; }
 }
@@ -300,25 +329,28 @@ footer p {
 
 <nav>
   <div class="logo">Lead<span>Pilot</span></div>
-  <a href="#form">Get Started</a>
+  <div class="nav-links">
+    <a href="pricing.html">Pricing</a>
+    <a href="#form">Get Started</a>
+  </div>
 </nav>
 
 <section class="hero">
   <div class="hero-text">
-    <h1>Find your <em>perfect home</em> in Lahore</h1>
-    <p>Tell us what you're looking for and our expert agents will match you with handpicked properties that fit your budget and lifestyle. Get a personalized response within minutes.</p>
+    <h1>Never lose a <em>real estate lead</em> again</h1>
+    <p>LeadPilot captures every lead from Zillow, Realtor.com, Facebook ads, or your website — then instantly sends a personalized, AI-written email so you're always first to respond.</p>
     <div class="trust-badges">
       <div class="badge">
-        <span class="badge-number">500+</span>
-        <span class="badge-label">Families settled</span>
+        <span class="badge-number">2,000+</span>
+        <span class="badge-label">Leads processed</span>
       </div>
       <div class="badge">
-        <span class="badge-number">15 min</span>
-        <span class="badge-label">Avg. response</span>
+        <span class="badge-number">&lt; 30s</span>
+        <span class="badge-label">Response time</span>
       </div>
       <div class="badge">
-        <span class="badge-number">4.9/5</span>
-        <span class="badge-label">Client rating</span>
+        <span class="badge-number">3-5x</span>
+        <span class="badge-label">More responses</span>
       </div>
     </div>
   </div>
@@ -326,13 +358,13 @@ footer p {
   <div class="form-card" id="form">
     <div id="formContent">
       <div class="form-header">
-        <h2>Start your property search</h2>
-        <p>Fill in your preferences and we'll find the best matches for you.</p>
+        <h2>See it in action</h2>
+        <p>Submit a test lead and watch the AI write a personalized email in real time.</p>
       </div>
 
       <div class="form-group">
         <label>Full Name</label>
-        <input type="text" id="name" placeholder="e.g. Ahmed Khan" required>
+        <input type="text" id="name" placeholder="e.g. John Smith" required>
       </div>
 
       <div class="form-row">
@@ -342,7 +374,7 @@ footer p {
         </div>
         <div class="form-group">
           <label>Phone</label>
-          <input type="tel" id="phone" placeholder="+92 300 1234567" required>
+          <input type="tel" id="phone" placeholder="+1 (555) 123-4567" required>
         </div>
       </div>
 
@@ -350,14 +382,14 @@ footer p {
         <label>What are you looking for?</label>
         <select id="property_interest">
           <option value="">Select property type</option>
-          <option value="3-bed apartment">3-Bed Apartment</option>
-          <option value="5-marla house">5-Marla House</option>
-          <option value="10-marla house">10-Marla House</option>
-          <option value="1-kanal house">1-Kanal House</option>
-          <option value="2-kanal house">2-Kanal House</option>
-          <option value="commercial plot">Commercial Plot</option>
-          <option value="residential plot">Residential Plot</option>
-          <option value="penthouse">Penthouse</option>
+          <option value="single-family home">Single-Family Home</option>
+          <option value="condo/apartment">Condo / Apartment</option>
+          <option value="townhouse">Townhouse</option>
+          <option value="luxury property">Luxury Property</option>
+          <option value="investment property">Investment Property</option>
+          <option value="commercial property">Commercial Property</option>
+          <option value="land/lot">Land / Lot</option>
+          <option value="new construction">New Construction</option>
         </select>
       </div>
 
@@ -365,80 +397,86 @@ footer p {
         <div class="form-group">
           <label>Budget</label>
           <select id="budget">
-            <option value="">Select budget</option>
-            <option value="50-80 Lakh">50-80 Lakh</option>
-            <option value="80 Lakh - 1.5 Crore">80 Lakh - 1.5 Crore</option>
-            <option value="1.5 - 3 Crore">1.5 - 3 Crore</option>
-            <option value="3 - 5 Crore">3 - 5 Crore</option>
-            <option value="5 Crore+">5 Crore+</option>
+            <option value="">Select budget range</option>
+            <option value="$100K - $250K">$100K - $250K</option>
+            <option value="$250K - $500K">$250K - $500K</option>
+            <option value="$500K - $750K">$500K - $750K</option>
+            <option value="$750K - $1M">$750K - $1M</option>
+            <option value="$1M - $2M">$1M - $2M</option>
+            <option value="$2M+">$2M+</option>
           </select>
         </div>
         <div class="form-group">
           <label>Preferred Location</label>
-          <select id="location">
-            <option value="">Select area</option>
-            <option value="DHA Phase 5 Lahore">DHA Phase 5</option>
-            <option value="DHA Phase 6 Lahore">DHA Phase 6</option>
-            <option value="DHA Phase 7 Lahore">DHA Phase 7</option>
-            <option value="DHA Phase 8 Lahore">DHA Phase 8</option>
-            <option value="Bahria Town Lahore">Bahria Town</option>
-            <option value="Gulberg Lahore">Gulberg</option>
-            <option value="Johar Town Lahore">Johar Town</option>
-            <option value="Model Town Lahore">Model Town</option>
-            <option value="Cantt Lahore">Cantt</option>
-          </select>
+          <input type="text" id="location" placeholder="e.g. Miami FL, Brooklyn NY, London" required>
         </div>
       </div>
 
       <button class="submit-btn" id="submitBtn" onclick="submitLead()">
-        Find My Perfect Property
+        Send Test Lead
       </button>
 
-      <p class="form-footer">Your information is secure and will never be shared.</p>
+      <p class="form-footer">Try it free — see the AI-generated email land in your inbox.</p>
     </div>
 
     <div class="success-state" id="successState">
       <div class="success-icon">&#10003;</div>
-      <h3>You're all set!</h3>
-      <p>Our property specialist will reach out to you within the next 15 minutes with personalized options.</p>
+      <h3>Check your inbox!</h3>
+      <p>A personalized, AI-written email was just sent to you in under 30 seconds. Imagine every lead getting this treatment — automatically.</p>
     </div>
   </div>
 </section>
 
 <section class="features">
   <div class="features-header">
-    <h2>Why families choose us</h2>
-    <p>We make finding your dream home effortless</p>
+    <h2>Why top agents use LeadPilot</h2>
+    <p>The AI assistant that never forgets a lead</p>
   </div>
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon red">&#9751;</div>
-      <h3>Handpicked matches</h3>
-      <p>No more scrolling through hundreds of listings. We match you with properties that fit your exact criteria, budget, and lifestyle preferences.</p>
+      <h3>AI-personalized outreach</h3>
+      <p>No more copy-paste templates. Our AI reads each lead's preferences — budget, location, property type — and writes a unique, warm email that feels human.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon gold">&#9889;</div>
-      <h3>Response in minutes</h3>
-      <p>Our AI-powered system analyzes your preferences instantly and our agents follow up with curated options before anyone else.</p>
+      <h3>First to respond, every time</h3>
+      <p>Speed-to-lead wins deals. LeadPilot responds in under 30 seconds — before your competitors even see the notification. 78% of buyers go with the first agent who replies.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon green">&#9733;</div>
-      <h3>Expert local knowledge</h3>
-      <p>Deep expertise in Lahore's prime neighborhoods. We know every street, every community, and every hidden gem in DHA, Bahria, and beyond.</p>
+      <h3>Smart follow-ups on autopilot</h3>
+      <p>Most leads need 3-5 touches. LeadPilot automatically follows up with new angles — market updates, new listings, price changes — until they respond.</p>
     </div>
   </div>
 </section>
 
-<section class="testimonial">
-  <blockquote>"They found us a beautiful 10-marla home in DHA Phase 6 within our budget. The entire process from first contact to keys in hand was incredibly smooth."</blockquote>
-  <cite>
-    <strong>Ayesha &amp; Faisal Malik</strong>
-    Homeowners since 2025
-  </cite>
+<section class="testimonials">
+  <div class="testimonials-header">
+    <h2>Agents love LeadPilot</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"I was manually emailing maybe 10 of my 50 weekly leads. Now every single one gets a personalized email within seconds. Closed 3 extra deals last month."</blockquote>
+      <cite>— Marcus R., Realtor, Miami FL</cite>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"The follow-up feature is a game changer. A buyer responded to the third AI follow-up — that was a $12K commission I would have lost without LeadPilot."</blockquote>
+      <cite>— Sarah T., Broker, Austin TX</cite>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"It's like having a virtual assistant who works 24/7. My response rate went from 8% to 34%. Best $199/mo I've ever spent on my business."</blockquote>
+      <cite>— David K., Agent, Toronto ON</cite>
+    </div>
+  </div>
 </section>
 
 <footer>
-  <p>&copy; 2026 LeadPilot. All rights reserved.</p>
+  <p>&copy; 2026 LeadPilot AI. All rights reserved.</p>
+  <p><a href="pricing.html">Pricing</a></p>
 </footer>
 
 <script>
@@ -450,16 +488,16 @@ async function submitLead() {
   const phone = document.getElementById('phone').value.trim();
   const property_interest = document.getElementById('property_interest').value;
   const budget = document.getElementById('budget').value;
-  const location = document.getElementById('location').value;
+  const location = document.getElementById('location').value.trim();
 
   if (!name || !email || !phone || !property_interest || !budget || !location) {
-    alert('Please fill in all fields to find your perfect property.');
+    alert('Please fill in all fields so we can send your test lead.');
     return;
   }
 
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Finding properties...';
+  btn.innerHTML = '<span class="spinner"></span> Sending test lead...';
 
   try {
     const response = await fetch(WEBHOOK_URL, {
@@ -479,11 +517,11 @@ async function submitLead() {
       document.getElementById('formContent').style.display = 'none';
       document.getElementById('successState').style.display = 'block';
     } else {
-      throw new Error('Network response was not ok');
+      throw new Error('Network response was not ok ');
     }
   } catch (error) {
     btn.disabled = false;
-    btn.innerHTML = 'Find My Perfect Property';
+    btn.innerHTML = 'Send Test Lead';
     alert('Something went wrong. Please try again.');
   }
 }
