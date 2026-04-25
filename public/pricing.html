@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing | LeadPilot AI</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF8F5;
+  --bg-card: #FFFFFF;
+  --text: #1A1A17;
+  --text-muted: #6B6960;
+  --accent: #C8553D;
+  --accent-light: #F4E8E4;
+  --accent-dark: #A3412D;
+  --gold: #B8941F;
+  --gold-light: #F7F0D8;
+  --border: #E8E4DE;
+  --success: #2D7A4F;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.grain {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.03; pointer-events: none; z-index: 100;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* NAV */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 40px; max-width: 1200px; margin: 0 auto;
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px; color: var(--accent);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+.logo span { color: var(--text); }
+.nav-links {
+  display: flex; gap: 28px; align-items: center;
+}
+.nav-links a {
+  color: var(--text-muted); text-decoration: none; font-size: 14px;
+  font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a.active { color: var(--accent); }
+
+/* HERO */
+.pricing-hero {
+  max-width: 900px; margin: 0 auto;
+  padding: 80px 40px 40px;
+  text-align: center;
+}
+.pricing-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px; line-height: 1.1; letter-spacing: -1.5px;
+  color: var(--text); margin-bottom: 20px;
+}
+.pricing-hero h1 em {
+  font-style: italic; color: var(--accent);
+}
+.pricing-hero p {
+  font-size: 19px; color: var(--text-muted);
+  max-width: 600px; margin: 0 auto 32px; font-weight: 300;
+  line-height: 1.7;
+}
+.billing-toggle {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px;
+  margin-top: 8px;
+}
+.billing-toggle button {
+  padding: 8px 20px;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px; font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.billing-toggle button.active {
+  background: var(--accent); color: white;
+}
+.billing-toggle .save-badge {
+  font-size: 11px; padding: 2px 8px;
+  background: var(--gold-light); color: var(--gold);
+  border-radius: 999px; margin-left: 4px;
+  font-weight: 600;
+}
+
+/* PRICING GRID */
+.pricing {
+  max-width: 1200px; margin: 60px auto;
+  padding: 0 40px;
+}
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  align-items: stretch;
+}
+.tier-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 32px;
+  position: relative;
+  display: flex; flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 40px rgba(0,0,0,0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.tier-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 60px rgba(0,0,0,0.08);
+}
+.tier-card.featured {
+  border: 2px solid var(--accent);
+  transform: scale(1.02);
+}
+.tier-card.featured::before {
+  content: '';
+  position: absolute; top: -1px; left: 32px; right: 32px; height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  border-radius: 0 0 4px 4px;
+}
+.tier-badge {
+  position: absolute;
+  top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--accent); color: white;
+  font-size: 11px; font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+.tier-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px; color: var(--text);
+  margin-bottom: 6px;
+}
+.tier-tagline {
+  font-size: 14px; color: var(--text-muted);
+  margin-bottom: 24px; min-height: 42px;
+}
+.tier-price {
+  display: flex; align-items: baseline; gap: 4px;
+  margin-bottom: 4px;
+}
+.tier-price .currency {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px; color: var(--text);
+}
+.tier-price .amount {
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px; color: var(--text);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.tier-price .period {
+  font-size: 15px; color: var(--text-muted);
+  margin-left: 4px;
+}
+.tier-billed {
+  font-size: 12px; color: var(--text-muted);
+  margin-bottom: 28px;
+}
+.tier-cta {
+  display: block; width: 100%;
+  padding: 14px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px; font-weight: 600;
+  text-align: center; text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 28px;
+  letter-spacing: 0.3px;
+}
+.tier-cta:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.tier-cta.primary {
+  background: var(--accent); color: white;
+  border-color: var(--accent);
+}
+.tier-cta.primary:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: white;
+}
+.tier-features {
+  list-style: none;
+  flex: 1;
+}
+.tier-features-label {
+  font-size: 12px; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.6px;
+  margin-bottom: 14px;
+}
+.tier-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.tier-features li::before {
+  content: '✓';
+  color: var(--success);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* CALLOUT */
+.callout {
+  max-width: 1200px; margin: 60px auto 0;
+  padding: 0 40px;
+}
+.callout-inner {
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--gold-light) 100%);
+  border-radius: 20px;
+  padding: 48px;
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px;
+  align-items: center;
+}
+.callout h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px; line-height: 1.2;
+  margin-bottom: 12px;
+}
+.callout p {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+.callout-actions {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.callout-btn {
+  display: block; text-align: center;
+  padding: 14px 24px;
+  background: var(--text);
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+.callout-btn:hover { background: var(--accent); }
+.callout-btn.secondary {
+  background: white; color: var(--text);
+  border: 1px solid var(--border);
+}
+.callout-btn.secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: white;
+}
+
+/* FAQ */
+.faq {
+  max-width: 800px; margin: 100px auto;
+  padding: 0 40px;
+}
+.faq-header {
+  text-align: center; margin-bottom: 48px;
+}
+.faq-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px; margin-bottom: 8px;
+}
+.faq-header p {
+  color: var(--text-muted); font-size: 16px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+  cursor: pointer;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-question {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 17px; font-weight: 500;
+  color: var(--text);
+}
+.faq-icon {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 400;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  color: var(--text-muted);
+  font-size: 15px; line-height: 1.7;
+  transition: max-height 0.3s, padding 0.3s;
+}
+.faq-item.open .faq-answer {
+  max-height: 400px;
+  padding-top: 12px;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px;
+  margin-top: 60px;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-left {
+  font-size: 13px; color: var(--text-muted);
+}
+.footer-links {
+  display: flex; gap: 24px;
+}
+.footer-links a {
+  color: var(--text-muted); text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--accent); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .pricing-hero h1 { font-size: 38px; }
+  .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
+  .tier-card.featured { transform: none; }
+  .callout-inner { grid-template-columns: 1fr; padding: 32px; }
+  .callout h2 { font-size: 26px; }
+  nav { padding: 16px 20px; }
+  .nav-links { gap: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav>
+  <a href="/" class="logo">Lead<span>Pilot</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/pricing.html" class="active">Pricing</a>
+    <a href="https://wa.me/923329346666" target="_blank">Contact</a>
+  </div>
+</nav>
+
+<section class="pricing-hero">
+  <h1>Simple pricing. <em>Real results.</em></h1>
+  <p>Start with our launch pricing while we onboard our first agents. Cancel anytime — no contracts, no setup fees.</p>
+  <div class="billing-toggle">
+    <button class="active" data-billing="monthly">Monthly</button>
+    <button data-billing="yearly">Yearly <span class="save-badge">SAVE 20%</span></button>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="pricing-grid">
+
+    <div class="tier-card">
+      <div class="tier-name">Starter</div>
+      <div class="tier-tagline">For solo agents getting their first AI lead system in place.</div>
+      <div class="tier-price">
+        <span class="currency">$</span>
+        <span class="amount" data-monthly="19" data-yearly="15">19</span>
+        <span class="period">/mo</span>
+      </div>
+      <div class="tier-billed" data-monthly="Billed monthly" data-yearly="Billed $180/year">Billed monthly</div>
+      <a href="https://wa.me/923329346666?text=Hi%20I%27d%20like%20to%20start%20with%20the%20Starter%20plan" class="tier-cta">Start with Starter</a>
+      <div class="tier-features-label">What's included</div>
+      <ul class="tier-features">
+        <li>Up to 50 leads per month</li>
+        <li>AI-personalized first-touch emails</li>
+        <li>1 lead source (website, Zillow, or Facebook)</li>
+        <li>Google Sheets CRM auto-populated</li>
+        <li>Gmail integration</li>
+        <li>Email support</li>
+      </ul>
+    </div>
+
+    <div class="tier-card featured">
+      <div class="tier-badge">Most Popular</div>
+      <div class="tier-name">Plus</div>
+      <div class="tier-tagline">For active agents who want every lead followed up — automatically.</div>
+      <div class="tier-price">
+        <span class="currency">$</span>
+        <span class="amount" data-monthly="49" data-yearly="39">49</span>
+        <span class="period">/mo</span>
+      </div>
+      <div class="tier-billed" data-monthly="Billed monthly" data-yearly="Billed $468/year">Billed monthly</div>
+      <a href="https://wa.me/923329346666?text=Hi%20I%27d%20like%20to%20start%20with%20the%20Plus%20plan" class="tier-cta primary">Start with Plus</a>
+      <div class="tier-features-label">Everything in Starter, plus</div>
+      <ul class="tier-features">
+        <li>Up to 250 leads per month</li>
+        <li>Smart follow-up sequences every 2 days</li>
+        <li>Up to 3 lead sources connected</li>
+        <li>WhatsApp lead alerts to your phone</li>
+        <li>Custom email tone &amp; branding</li>
+        <li>Lead scoring &amp; priority routing</li>
+        <li>Priority email support</li>
+      </ul>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-name">Pro</div>
+      <div class="tier-tagline">For top agents and small teams who never want to lose a lead again.</div>
+      <div class="tier-price">
+        <span class="currency">$</span>
+        <span class="amount" data-monthly="99" data-yearly="79">99</span>
+        <span class="period">/mo</span>
+      </div>
+      <div class="tier-billed" data-monthly="Billed monthly" data-yearly="Billed $948/year">Billed monthly</div>
+      <a href="https://wa.me/923329346666?text=Hi%20I%27d%20like%20to%20start%20with%20the%20Pro%20plan" class="tier-cta">Start with Pro</a>
+      <div class="tier-features-label">Everything in Plus, plus</div>
+      <ul class="tier-features">
+        <li>Unlimited leads</li>
+        <li>Unlimited lead sources</li>
+        <li>Custom AI training on your voice</li>
+        <li>Multi-agent team support (up to 5 seats)</li>
+        <li>Advanced analytics dashboard</li>
+        <li>Phone + WhatsApp support</li>
+        <li>Dedicated onboarding call</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="callout">
+  <div class="callout-inner">
+    <div>
+      <h2>Not sure which plan fits?</h2>
+      <p>Try the live demo on the homepage, or send me a WhatsApp message and I'll help you pick — usually within an hour.</p>
+    </div>
+    <div class="callout-actions">
+      <a href="https://wa.me/923329346666?text=Hi%20I%27d%20like%20help%20picking%20a%20plan" class="callout-btn">Chat on WhatsApp</a>
+      <a href="/" class="callout-btn secondary">Try the demo</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="faq-header">
+    <h2>Frequently asked questions</h2>
+    <p>Quick answers to what most agents ask before signing up.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>Do I need any technical skills to set this up?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      None at all. We handle the full setup — connecting your Gmail, your lead sources, and your CRM. You just tell us where your leads come in from. Most agents are fully live within 24-48 hours.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>What lead sources can LeadPilot connect to?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      Your own website forms, Zillow, Realtor.com, Facebook ads, Google ads, OpenHouse sign-in apps, and any source that can send a webhook or email notification. If you have a lead source we don't already integrate with, we'll add it during setup.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>How is this different from a regular CRM or autoresponder?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      Templates feel like templates. LeadPilot uses Claude AI to write each email from scratch using the lead's actual budget, location, and property interest — so it reads like you sat down and typed it. Then it follows up with a different angle every 2 days until they reply.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>Can I cancel anytime?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      Yes. Monthly plans cancel anytime. Yearly plans cancel at the end of your term. No contracts, no cancellation fees, no questions asked.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>What happens to my leads if I cancel?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      They're yours. Every lead is stored in your own Google Sheet, in your own Google account. We don't keep them, and you can keep using the spreadsheet forever — even after you cancel.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>Is there a free trial?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      We offer a 7-day money-back guarantee on all plans. If LeadPilot isn't a fit in your first week, send us a WhatsApp message and we'll refund you in full — no forms, no friction.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>Do you work with agents outside the US?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      Yes. LeadPilot works for agents in the US, UK, Canada, Australia, Dubai, and beyond. The AI writes in English by default; we can configure other languages on Plus and Pro plans.
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">© 2026 LeadPilot AI — Built for real estate agents who want every lead.</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="https://wa.me/923329346666" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Billing toggle
+const toggleBtns = document.querySelectorAll('.billing-toggle button');
+const amounts = document.querySelectorAll('.tier-price .amount');
+const billings = document.querySelectorAll('.tier-billed');
+
+toggleBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    toggleBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const mode = btn.dataset.billing;
+    amounts.forEach(el => { el.textContent = el.dataset[mode]; });
+    billings.forEach(el => { el.textContent = el.dataset[mode]; });
+  });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>
